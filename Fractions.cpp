@@ -1,21 +1,19 @@
 #include "Fractions.h"
 
-void Fractions::make_integer(int c_number, short c_afterpoint_number, int& res)
+
+void Fractions::make_integer(int c_number, short c_afterpoint_number, int& result)
 {
-	res = c_number * 100; // Convert the whole number part to the equivalent fraction value
+	result = c_number * 100; // Convert the whole number part to the equivalent fraction value
 	if (c_number < 0 && c_afterpoint_number > 0)
 	{
 		c_afterpoint_number *= -1; // Adjust the sign of the decimal part if necessary
 	}
-	res += c_afterpoint_number; // Combine the whole number and decimal parts to form the final fraction value
+	result += c_afterpoint_number; // Combine the whole number and decimal parts to form the final fraction value
 }
 
-void Fractions::make_integer_helper(Fractions& num, Fractions& result, int& res)
+void Fractions::make_integer_helper(Fractions num, Fractions& result, int& res)
 {
-	make_integer(number, afterpoint_number, res); // Convert the current fraction to an integer
-
-	result.number = 0;
-	result.number += res; // Add the integer value of the current fraction to the result
+	make_integer(number, afterpoint_number, result.number); // Convert the current fraction to an integer
 	make_integer(num.number, num.afterpoint_number, res); // Convert the input fraction to an integer
 }
 
@@ -88,7 +86,23 @@ void Fractions::multiply(Fractions num, Fractions& result)
 	make_fraction_after_multiply(result.number, result.afterpoint_number); // Adjust the result fraction after multiplication
 }
 
-void Fractions::comparison(Fractions num1, Fractions& num2)
+void Fractions::comparison(Fractions num, short& result)
 {
+	int number1 = 0;
+	int number2 = 0;
+	make_integer(number, afterpoint_number, number1); // Convert the current fraction to an integer
+	make_integer(num.number, num.afterpoint_number, number2); // Convert the input fraction to an integer
 
+	if (number1 > number2)
+	{
+		result = 1; // Set the result to 1 if the current fraction is greater than the input fraction
+	}
+	else if (number1 < number2)
+	{
+		result = -1; // Set the result to -1 if the current fraction is less than the input fraction
+	}
+	else
+	{
+		result = 0; // Set the result to 0 if the current fraction is equal to the input fraction
+	}
 }

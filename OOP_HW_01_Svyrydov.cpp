@@ -80,9 +80,27 @@ void Multiply(Fractions& num1, Fractions& num2, Fractions& result)
 }
 
 // This function performs comparison of two fractions.
-void Comparison(Fractions& num1, Fractions& num2, Fractions& result)
+void Comparison(Fractions& num1, Fractions& num2)
 {
+	short result = 0;
+	input(num1); // Take user input for the first fraction
+	input(num2); // Take user input for the second fraction
+	num1.comparison(num2, result); // Compare the two fractions
 
+	if (result > 0)
+	{
+		cout << "\n\tThe number ";	Print(num1);
+		cout << " is bigger then ";	Print(num2);
+	}
+	else if (result < 0)
+	{
+		cout << "\n\tThe number ";	Print(num2);
+		cout << " is bigger then ";	Print(num1);
+	}
+	else
+	{
+		cout << "\n\tThe numbers are the same\n\t";
+	}
 }
 
 // This function displays a menu and performs operations on fractions based on the user's choice.
@@ -104,8 +122,9 @@ void menu(Fractions& num1, Fractions& num2, Fractions& result)
 		Multiply(num1, num2, result); // Call the function to multiply two fractions
 		break;
 	case 4:
-		Comparison(num1, num2, result) // Call the function to comparison two fractions
+		Comparison(num1, num2); // Call the function to comparison two fractions
 	default:
+		cerr << "\n\n\tWrong input"; // Print an error message for invalid input
 		break;
 	}
 }

@@ -10,10 +10,10 @@ private:
 	bool positive;               // Represents the sign of the fraction (true for positive, false for negative)
 
 	// Helper function to convert a fraction into an integer
-	void make_integer(int c_number, short c_afterpoint_number, int& res);
+	void make_integer(int c_number, short c_afterpoint_number, int& result);
 
 	// Helper function to convert a fraction into an integer
-	void make_integer_helper(Fractions& num, Fractions& result, int& res);
+	void make_integer_helper(Fractions num, Fractions& result, int& res);
 
 	// Helper function to convert an integer into a fraction
 	void make_fraction(int& c_number, short& c_afterpoint_number, bool& c_positive);
@@ -38,7 +38,7 @@ public:
 	void multiply(Fractions num, Fractions& result);
 
 	// Performs comparison of two fractions
-	void comparison(Fractions num1, Fractions& num2);
+	void comparison(Fractions num, short& result);
 };
 
 
